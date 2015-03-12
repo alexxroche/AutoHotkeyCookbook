@@ -22,12 +22,24 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h1> Backgroun </h1>
+        <h1> Background </h1>
             AutoHotkey (ahk) is amazingly powerful and you could write a script that could automate your computer to do anything from play chess to design a space-ship. (This is not a balanced or objective view. This author is a huge fan of ahk.)
     That said, sometimes we just want to cut-n-paste and then play with the code until we understand enough to be dangerous, (rather than fully understanding.)
 
         For those that would rather know enough to be useful I've included a well commented <a href="/AutoHotkeyCookbook/examples/boilerplate_example.html">example</a> that contains the defaults that I use.
 
+        <h3> Presumptions, Defaults and choices</h3>
+            The first thing that I did, after glimpsing the true power of AutoHotkey was to do <a href="http://www.autohotkey.com/board/topic/27988-edit-this-script-with-notepad/#post_id_582019">roughly what techturtle suggested</a>. This sets Notepad++ as the default editor for AutoHotkey.
+    
+    <ol>
+        <li> run regedit
+        <li> Find HKEY_CLASSES_ROOT\AutoHotkeyScript\Shell\Edit\Command
+        <li> modify the value to be
+        <pre>
+            notepad++.exe %1
+        </pre>
+    </ol>
+    This works on Windows 7.
       </section>
     </div>
 
