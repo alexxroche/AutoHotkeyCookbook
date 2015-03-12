@@ -12,16 +12,23 @@
     <!-- HEADER -->
     <div id="header_wrap" class="outer">
         <header class="inner">
-          <a id="forkme_banner" href="https://github.com/alexxroche/AutoHotkeyCookbook">View on GitHub</a>
-
           <h1 id="project_title">AutoHotkey Cookbook</h1>
-          <h2 id="project_tagline">A Howto cut-n-past guide for AutoHotkey</h2>
         </header>
     </div>
 
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
+<div id="TLDR">TL;DR<pre>
+$!F4::
+    ;prevent Alt-F4 from closing Notepad++ <a href="#fn_0">[0]</a>
+    IfWinActive ahk_class Notepad++
+    {
+        return
+    }
+    Send, !{F4}
+return
+</pre> </div>
         Alt-F4 [ !F4 ] may be used to close a program. If you want that NOT to apply to a particular program, e.g. Notepad++:
 
         <pre>
@@ -44,6 +51,7 @@ $!F4::
         SetTimer, RemoveToolTip20, 800
         return ; take no further action
     }
+    ;if Firefox <a href="#nb">Exists</a> then do NOT close ANY window
     else IfWinExists ahk_class Firefox 
     {
         msg := "Click the red X in the top right if you really want Firefox closed"
@@ -68,6 +76,11 @@ IfWinActive, Open Database - NewDatabase.kdbx
         </pre>
             KeePass always has, (for this author) the fixed title, (while opening) of "Open Database - NewDatabase.kdbx" so we can skip the ahk_class
       </section>
+    </div>
+    <div id="nb">
+    <h4>N.B.</h4>
+        IfWinActive only considered the window that you are looking at.<br />
+        IfWinExists changes the behavior on a window that you may have Active or may be minimised.
     </div>
 
     <!-- FOOTER  -->
