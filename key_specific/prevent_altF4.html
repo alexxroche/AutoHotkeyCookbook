@@ -25,39 +25,40 @@
         Alt-F4 [ !F4 ] may be used to close a program. If you want that NOT to apply to a particular program, e.g. Notepad++:
 
         <pre>
-            #SingleInstance force
-            SetTitleMatchMode, 2
-            RemoveToolTip20:
-                SetTimer, RemoveToolTip, Off
-                ToolTip,,,,20
-            return
+#SingleInstance force
+SetTitleMatchMode, 2
+RemoveToolTip20:
+    SetTimer, RemoveToolTip, Off
+    ToolTip,,,,20
+return
 
-            $!F4::
-                ;prevent Alt-F4 from closing Notepad++ <a href="#fn_0">[0]</a>
-                IfWinActive ahk_class Notepad++
-                {
-                    Tooltip, You said to leave Notepad++ open, (A_ScreenWidth / 2), (A_ScreenHeight / 2), 20
-                    SetTimer, RemoveToolTip20, 800
-                    return ; take no further action
-                }
-                else IfWinExists ahk_class Firefox 
-                {
-                    Tooltip, Click the red X in the top right if you really want Firefox closed, (A_ScreenWidth / 2), (A_ScreenHeight / 2), 20
-                    SetTimer, RemoveToolTip20, 800
-                    return ; ignore Alt-F4
-                }else{
-                    Tooltip, I'm melting..., (A_ScreenWidth / 2), (A_ScreenHeight / 2), 20
-                    SetTimer, RemoveToolTip20, 800
-                    Send, !{F4} ; actually send Alt-F4 for all other programs
-                }
+$!F4::
+    ;prevent Alt-F4 from closing Notepad++ <a href="#fn_0">[0]</a>
+    IfWinActive ahk_class Notepad++
+    {
+        Tooltip, You said to leave Notepad++ open, (A_ScreenWidth / 2), (A_ScreenHeight / 2), 20
+        SetTimer, RemoveToolTip20, 800
+        return ; take no further action
+    }
+    else IfWinExists ahk_class Firefox 
+    {
+        Tooltip, Click the red X in the top right if you really want Firefox closed, (A_ScreenWidth / 2), (A_ScreenHeight / 2), 20
+        SetTimer, RemoveToolTip20, 800
+        return ; ignore Alt-F4
+    }else{
+        Tooltip, I'm melting..., (A_ScreenWidth / 2), (A_ScreenHeight / 2), 20
+        SetTimer, RemoveToolTip20, 800
+        Send, !{F4} ; actually send Alt-F4 for all other programs
+    }
+return
         </pre>
 
         <a id="fn_0" href="#main_content">[0]</a> The Title of Notepad++ may change depending on which file is open. For other programs that have a fixed title you can use:
         <pre>
-            IfWinActive, Open Database - NewDatabase.kdbx
-            {
-                return
-            }
+IfWinActive, Open Database - NewDatabase.kdbx
+{
+    return
+}
         </pre>
             KeePass always has, (for this author) the fixed title, (while opening) of "Open Database - NewDatabase.kdbx" so we can skip the ahk_class
       </section>
