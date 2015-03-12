@@ -21,28 +21,31 @@
       <section id="main_content" class="inner">
         <h3>This example is rather contrived to showcase the practices that I use rather than the functions to which I apply them.
         <pre>
-        ; ahk for example (what this is used for)
-        version = 20140506070809
-        author = alexx ; Tooltip can talk to me by name with %author%
-        #SingleInstance force
-        SetCapsLockState, off
-        SetNumLockState, off
-        CapsLock::Shift     ; happy hacker style - turns Caps Lock into just another shift key
+; ahk for example (what this is used for)
+version = 20140506070809
+author = alexx ; Tooltip can talk to me by name with %author%
+#SingleInstance force  ; <a href="#a1">try to prevent multipe instances of ahk</a>
+SetCapsLockState, off
+SetNumLockState, off
+CapsLock::Shift     ; happy hacker style - turns Caps Lock into a shift key
 
-        ; F6 breaks any active loops and tries to reload the AutoHotkey.ahk script
-        F6::
-            Reload
-        return
+; F6 breaks any active loops and tries to reload the AutoHotkey.ahk script
+F6::
+    Reload
+return
 
-        ; get the position and colour at the location of the mouse pointer
-        ^!+?::
-            MouseGetPos, xpos, ypos
-            PixelGetColor, pixColor, %xpos%, %ypos%
-            Tooltip, %pixColor% %xpos%`,%ypos%, %xpos%, ( ypos - 20 ), 20
-        return
+; get the position and colour at the location of the mouse pointer
+^!+?::
+    MouseGetPos, xpos, ypos
+    PixelGetColor, pixColor, %xpos%, %ypos%
+    Tooltip, %pixColor% %xpos%`,%ypos%, %xpos%, ( ypos - 20 ), 20
+return
 
         </pre>
-    
+
+<div id="addendum">
+        <span id="a1">If you hammer F6 it can still, sometimes end up with two or more instanced of ahk running</span>
+</div>
         
       </section>
     </div>
