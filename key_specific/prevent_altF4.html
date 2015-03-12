@@ -4,8 +4,9 @@
     <meta charset="utf-8">
     <meta name="description" content="Prevent Alt-F4 from closing a program" />
     <title>AutoHotkey Cookbook - Interrupt Alt F4</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="/AutoHotkeyCookbook/css/stylesheet.css">
-    <link rel="stylesheet" type="text/css" href="/AutoHotkeyCookbook/css/main.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/rainbow-ahk.css">
 </head>
 <body class="body">
 
@@ -21,7 +22,7 @@
       <section id="main_content" class="inner">
 <div id="TLDR">TL;DR<pre>
 $!F4::
-    ;prevent Alt-F4 from closing Notepad++ <a href="#fn_0">[0]</a>
+    <span class="comment">;prevent Alt-F4 from closing Notepad++ <a href="#fn_0">[0]</a></span>
     IfWinActive ahk_class Notepad++
     {
         return
@@ -43,7 +44,7 @@ halfWidth := (A_ScreenWidth / 2)
 halfHeight:= (A_ScreenHeight / 2)
 
 $!F4::
-    ;prevent Alt-F4 from closing Notepad++ <a href="#fn_0">[0]</a>
+    <span class="comment">;prevent Alt-F4 from closing Notepad++ <a href="#fn_0">[0]</a></span>
     IfWinActive ahk_class Notepad++
     {
         msg:="You said to leave Notepad++ open"
@@ -90,6 +91,10 @@ IfWinActive, Open Database - NewDatabase.kdbx
         <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
+
+    <script src="../js/rainbow/rainbow.min.js"></script>
+    <script src="../js/rainbow/generic.js"></script>
+    <script src="../js/rainbow/ahk.js"></script>
 
   </body>
 </html>

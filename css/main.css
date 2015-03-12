@@ -3,3 +3,9 @@
   white-space: nowrap;
 }
 
+.hljs-comment
+{
+  color: #6CFFAC;
+  font-style: italic;
+}
+

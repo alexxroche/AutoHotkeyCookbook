@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="description" content="A Howto cut-n-past guide for AutoHotkey" />
     <title>AutoHotkey Cookbook</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="/AutoHotkeyCookbook/css/stylesheet.css">
-    <link rel="stylesheet" type="text/css" href="/AutoHotkeyCookbook/css/main.css">
-    <link rel="stylesheet" type="text/css" href="/AutoHotkeyCookbook/css/rainbow-ahk.css">
-    <script src="/AutoHotkeyCookbook/js/rainbow-css.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/stylesheet.css">
+    <!--link rel="stylesheet" type="text/css" href="../css/rainbow-ahk.css"-->
+    <link rel="stylesheet" type="text/css" href="../css/sunburst.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
 </head>
 <body class="body">
 
@@ -28,9 +28,7 @@
         <li> run regedit
         <li> Find HKEY_CLASSES_ROOT\AutoHotkeyScript\Shell\Edit\Command
         <li> modify the value to be
-        <pre>
-            notepad++.exe %1
-        </pre>
+        <pre class="rainbow">notepad++.exe %1</pre>
     </ol>
     This works on Windows 7.
         <h4>Not everyone wants salt in their porridge</h4>
@@ -38,7 +36,7 @@
 
         <h3>Key mapping</h3>
             ahk is amazing. If your delete key breaks you can simply re-map it to F9 with:
-            <pre><code data-language="ahk">F9:: Send, {Del} ; re-map F9 to be Delete</code></pre>
+            <pre data-language="ahk"><code class="autohotkey hljs">F9:: Send, {Del} ; re-map F9 to be Delete</code></pre>
             but if that is all you are after then you might be better off with a specific tool for that job, such as <a href="http://sharpkeys.codeplex.com/">SharpKeys</a> <a href="#fn_1">[1]</a>
 
 
@@ -61,5 +59,11 @@
       </footer>
     </div>
 
+    <!--script src="../js/rainbow/rainbow.min.js"></script>
+    <script src="../js/rainbow/generic.js"></script>
+    <script src="../js/rainbow/ahk.js"></script-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/languages/autohotkey.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
   </body>
 </html>
