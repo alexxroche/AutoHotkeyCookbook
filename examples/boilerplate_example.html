@@ -22,10 +22,30 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
+        <h3>This example is rather contrived to showcase the practices that I use rather than the functions to which I apply them.
+        <pre>
+        ; ahk for example (what this is used for)
+        version = 20140506070809
+        author = alexx ; Tooltip can talk to me by name with %author%
+        #SingleInstance force
+        SetCapsLockState, off
+        SetNumLockState, off
+        CapsLock::Shift     ; happy hacker style - turns Caps Lock into just another shift key
 
-        <ul>
-            <li><h3>Alt-F4</h3>: <a id="Alt-F4" href="https://github.com/alexxroche/AutoHotkeyCookbook/key_specific/prevent_altF4.html">Stop Alt-F4</a></li>
-        </ul>
+        ; F6 breaks any active loops and tries to reload the AutoHotkey.ahk script
+        F6::
+            Reload
+        return
+
+        ; get the position and colour at the location of the mouse pointer
+        ^!+?::
+            MouseGetPos, xpos, ypos
+            PixelGetColor, pixColor, %xpos%, %ypos%
+            Tooltip, %pixColor% %xpos%`,%ypos%, %xpos%, ( ypos - 20 ), 20
+        return
+
+        </pre>
+    
         
       </section>
     </div>
