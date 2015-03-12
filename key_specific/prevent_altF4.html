@@ -32,21 +32,27 @@ RemoveToolTip20:
     ToolTip,,,,20
 return
 
+halfWidth := (A_ScreenWidth / 2) 
+halfHeight:= (A_ScreenHeight / 2)
+
 $!F4::
     ;prevent Alt-F4 from closing Notepad++ <a href="#fn_0">[0]</a>
     IfWinActive ahk_class Notepad++
     {
-        Tooltip, You said to leave Notepad++ open, (A_ScreenWidth / 2), (A_ScreenHeight / 2), 20
+        msg:="You said to leave Notepad++ open"
+        Tooltip, %msg%, %halfWidth%, %halfHeight%, 20
         SetTimer, RemoveToolTip20, 800
         return ; take no further action
     }
     else IfWinExists ahk_class Firefox 
     {
-        Tooltip, Click the red X in the top right if you really want Firefox closed, (A_ScreenWidth / 2), (A_ScreenHeight / 2), 20
+        msg := "Click the red X in the top right if you really want Firefox closed"
+        Tooltip, %msg%, ( halfWidth / 8 ), %halfHeight%, 20
         SetTimer, RemoveToolTip20, 800
         return ; ignore Alt-F4
     }else{
-        Tooltip, I'm melting..., (A_ScreenWidth / 2), (A_ScreenHeight / 2), 20
+        msg := "I'm melting..."
+        Tooltip, %msg%, %halfWidth%, %halfHeight%, 20
         SetTimer, RemoveToolTip20, 800
         Send, !{F4} ; actually send Alt-F4 for all other programs
     }
