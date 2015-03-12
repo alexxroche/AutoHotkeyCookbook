@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Prevent Alt-F4 from closing a program" />
+    <title>AutoHotkey Cookbook - Interrupt Alt F4</title>
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+</head>
+<body class="body">
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/alexxroche/AutoHotkeyCookbook">View on GitHub</a>
+
+          <h1 id="project_title">AutoHotkey Cookbook</h1>
+          <h2 id="project_tagline">A Howto cut-n-past guide for AutoHotkey</h2>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        Alt-F4 [ !F4 ] may be used to close a program. If you want that NOT to apply to a particular program, e.g. Notepad++:
+
+        <pre>
+            #SingleInstance force
+            SetTitleMatchMode, 2
+            RemoveToolTip20:
+                SetTimer, RemoveToolTip, Off
+                ToolTip,,,,20
+            return
+
+            $!F4::
+                ;prevent Alt-F4 from closing Notepad++ <a href="#fn_0">[0]</a>
+                IfWinActive ahk_class Notepad++
+                {
+                    Tooltip, You said to leave Notepad++ open, (A_ScreenWidth / 2), (A_ScreenHeight / 2), 20
+                    SetTimer, RemoveToolTip20, 800
+                    return ; take no further action
+                }
+                else IfWinExists ahk_class Firefox 
+                {
+                    Tooltip, Click the red X in the top right if you really want Firefox closed, (A_ScreenWidth / 2), (A_ScreenHeight / 2), 20
+                    SetTimer, RemoveToolTip20, 800
+                    return ; ignore Alt-F4
+                }else{
+                    Tooltip, I'm melting..., (A_ScreenWidth / 2), (A_ScreenHeight / 2), 20
+                    SetTimer, RemoveToolTip20, 800
+                    Send, !{F4} ; actually send Alt-F4 for all other programs
+                }
+        </pre>
+
+        <a id="fn_0" href="#main_content">[0]</a> The Title of Notepad++ may change depending on which file is open. For other programs that have a fixed title you can use:
+        <pre>
+            IfWinActive, Open Database - NewDatabase.kdbx
+            {
+                return
+            }
+        </pre>
+            KeePass always has, (for this author) the fixed title, (while opening) of "Open Database - NewDatabase.kdbx" so we can skip the ahk_class
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">AutoHotkey Cookbook maintained by <a href="https://github.com/alexxroche">Alexx Roche</a> and others.</p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+  </body>
+</html>

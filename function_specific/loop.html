@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Practial loop" />
+    <title>AutoHotkey Cookbook - Loop</title>
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+</head>
+<body class="body">
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/alexxroche/AutoHotkeyCookbook">View on GitHub</a>
+
+          <h1 id="project_title">AutoHotkey Cookbook</h1>
+          <h2 id="project_tagline">A Howto cut-n-past guide for AutoHotkey</h2>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        Alt-F4 [ !F4 ] may be used to close a program. If you want that NOT to apply to a particular program, e.g. Notepad++:
+
+        <pre>
+            ;version = 201503121102
+            ;author = alexx
+            ; Press F6 to reload your script, and break any running loops
+            F6::
+                #SingleInstance force
+                Reload
+            return
+
+            ; toggle bunny-hop feature by pressing, Ctrl-Alt-Shift-z
+            ^!+z:: Hotkey, *~$Space, Toggle
+
+            ; css.gamebanana.com/sripts5159 bunny-hop feature
+            *~$Space::
+                Sleep 5
+                while not GETKeyState("F6", "P") loop {
+                    GetKeyState, SpaceState, Space, P
+                    If SpaceState = U
+                        break
+                    Sleep 1
+                    Send, {Blind}{Space}
+                } ; /while
+            return
+
+            /* 
+               Rather than hammering your space-bar and wearing out your thumbs, 
+               you can enable this piece of code to "bounce" the space-bar
+               Ctrl-Alt-Shift-z toggles this feature off. <a href="#fn_0">[0]</a>
+            */
+
+        </pre>
+
+        <a id="fn_0" href="#main_content">[0]</a>It would be nice to have this Hotkey OFF by default and then toggle ON with ^!+z
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">AutoHotkey Cookbook maintained by <a href="https://github.com/alexxroche">Alexx Roche</a> and others.</p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+  </body>
+</html>
