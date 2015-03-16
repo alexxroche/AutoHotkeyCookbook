@@ -22,7 +22,7 @@
         <h3>This example is rather contrived to showcase the practices that I use rather than the functions to which I apply them.
         <pre>
 ; ahk for example (what this is used for)
-version = 20140506070809
+version = 20140506070810
 author = alexx ; Tooltip can talk to me by name with %author%
 #SingleInstance force  ; <a href="#a1">try to prevent multipe instances of ahk</a>
 SetCapsLockState, off
@@ -34,6 +34,11 @@ F6::
     Reload
 return
 
+;Shift-F6 toggles Suspends AutoHotkey so that everything works as normal
++F6::
+    Suspend
+return
+
 ; get the position and colour at the location of the mouse pointer
 ^!+?::
     MouseGetPos, xpos, ypos
@@ -41,6 +46,17 @@ return
     Tooltip, %pixColor% %xpos%`,%ypos%, %xpos%, ( ypos - 20 ), 20
 return
 
+;
+; global functions
+;
+
+blank_screen(){
+    SendMessage 0x112, 0xF170, 2, , Program Manager  ; Monitor off
+return
+}
+
+; "boss key"  Windows-\ (Windows "backslash")
+#\:: blank_screen()
         </pre>
 
 <div id="addendum">
