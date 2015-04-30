@@ -20,18 +20,11 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-<div id="TLDR">TL;DR<pre>
+    Shift-Space toggles on spacebar hammering until space is pressed to toggle it off
+     <pre>
 +$Space::
-    <span class="comment">;Shift-Space toggles on spacebar hammering until space is pressed to toggle it off</span>
-    KeyWait, Space
-    While not GetKeyState("Space","P") loop {
-        Send, {Space}
-    }
-return
-</pre> </div>
-        <pre>
-+$Space::
-    <span class="comment">;Shift-Space toggles on spacebar hammering until space is pressed to toggle it off</span>
+    <span class="comment">; +Space (Shift-Space) toggles on spacebar hammering until 
+    space is pressed to toggle it off</span>
     KeyWait, Space
     While not GetKeyState("Space","P") loop {
         Send, {Space}
